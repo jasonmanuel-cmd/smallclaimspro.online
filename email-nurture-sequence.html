@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--
+  SmallClaimsPro — 3-Email Nurture Sequence
+  Trigger: Free analysis submitted (selectedTier = "free")
+  Goal: Convert free users to paid Court Packet ($29) or Done-For-You Prep ($99)
+
+  EMAIL 1 — Sent immediately (or same day) after free analysis email
+  EMAIL 2 — Day 3
+  EMAIL 3 — Day 7
+
+  To use with Resend: copy each email's HTML into a separate template.
+  Replace {{name}}, {{state_name}}, {{court_name}}, {{claim_limit}}, {{state_code}} with
+  dynamic values from the Supabase intake_submissions row.
+  Add unsubscribe footer link per CAN-SPAM.
+-->
+
+<!-- ============================================================
+     EMAIL 1: "Your analysis is ready — here's what's next"
+     Sent: Immediately after free analysis delivery
+     Subject: Your SmallClaimsPro analysis is ready, {{name}}
+     ============================================================ -->
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body{margin:0;padding:0;background:#f4f1eb;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+.wrap{max-width:580px;margin:0 auto;padding:32px 16px;}
+.card{background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,61,0.08);}
+.header{background:#0f1f3d;padding:28px 32px;border-bottom:3px solid #c9a84c;}
+.logo{font-family:Georgia,serif;font-size:20px;font-weight:700;color:#ffffff;}
+.logo span{color:#c9a84c;}
+.body{padding:32px;}
+.greeting{font-size:17px;font-weight:600;color:#0f1f3d;margin-bottom:16px;}
+.p{font-size:15px;color:#374151;line-height:1.7;margin-bottom:16px;}
+.highlight-box{background:#faf8f3;border-left:4px solid #c9a84c;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;}
+.highlight-box p{font-size:14px;color:#1a1a2e;margin:0;line-height:1.6;}
+.highlight-box strong{color:#0f1f3d;}
+.step-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;}
+.step-num{width:28px;height:28px;border-radius:50%;background:#0f1f3d;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:Georgia,serif;}
+.step-text{font-size:14px;color:#374151;line-height:1.6;padding-top:3px;}
+.step-text strong{color:#0f1f3d;}
+.cta-primary{display:block;text-align:center;background:#c9a84c;color:#0f1f3d;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;margin:28px 0 16px;}
+.cta-secondary{display:block;text-align:center;background:transparent;color:#6b7280;padding:10px;font-size:13px;text-decoration:none;margin-bottom:8px;}
+.footer-note{font-size:12px;color:#9ca3af;text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #e5e7eb;line-height:1.6;}
+.footer-note a{color:#9ca3af;}
+.badge{display:inline-block;background:#f3efe6;border-radius:4px;padding:3px 10px;font-size:11px;font-weight:600;color:#92600a;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+  <div class="header">
+    <div class="logo">Small<span>Claims</span>Pro</div>
+  </div>
+  <div class="body">
+    <p class="greeting">Hi {{name}},</p>
+    <p class="p">Your free case analysis for {{state_name}} {{court_name}} is ready. We've reviewed your situation and here's the short version:</p>
+
+    <div class="highlight-box">
+      <p><strong>Your case looks viable.</strong> The {{state_name}} {{court_name}} handles cases up to <strong>{{claim_limit}}</strong>. Based on what you described, you have the standing to file and we identified the key evidence points you'll need to win.</p>
+    </div>
+
+    <p class="p">Here's what happens next in most {{state_name}} small claims cases:</p>
+
+    <div class="step-row"><div class="step-num">1</div><div class="step-text"><strong>Send your demand letter</strong> — most people get paid before ever setting foot in court. A professionally written letter citing the right statutes signals you're serious.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-text"><strong>File your claim</strong> — if they don't respond, you file at the {{court_name}}. Your Court Packet includes the right form, pre-filled instructions, and the filing fee amount.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-text"><strong>Win your hearing</strong> — your packet includes a hearing script tailored to your situation, so you know exactly what to say and what evidence to present.</div></div>
+
+    <p class="p">The free analysis gave you the overview. The <strong>Court Packet ($29)</strong> gives you everything to actually move forward today.</p>
+
+    <a href="https://square.link/u/Y6Wb0XPx" class="cta-primary">Get My Court Packet — $29 →</a>
+    <a href="https://smallclaimspro.online/#intake" class="cta-secondary">Review my free analysis first</a>
+
+    <p class="p" style="font-size:13px;color:#9ca3af;">Questions? Reply to this email — a real person reads every response.</p>
+
+    <div class="footer-note">
+      SmallClaimsPro · Document preparation service · Not a law firm<br/>
+      <a href="{{unsubscribe_url}}">Unsubscribe</a> · <a href="https://smallclaimspro.online/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
+<!-- ============================================================
+     EMAIL 2: "The demand letter is step one — here's why it matters"
+     Sent: Day 3 (if no paid purchase recorded)
+     Subject: Most people get paid before the hearing. Here's how.
+     ============================================================ -->
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body{margin:0;padding:0;background:#f4f1eb;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+.wrap{max-width:580px;margin:0 auto;padding:32px 16px;}
+.card{background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,61,0.08);}
+.header{background:#0f1f3d;padding:28px 32px;border-bottom:3px solid #c9a84c;}
+.logo{font-family:Georgia,serif;font-size:20px;font-weight:700;color:#ffffff;}
+.logo span{color:#c9a84c;}
+.body{padding:32px;}
+.p{font-size:15px;color:#374151;line-height:1.7;margin-bottom:16px;}
+.stat-row{display:flex;gap:0;margin:24px 0;border-radius:10px;overflow:hidden;border:1px solid #e5e7eb;}
+.stat{flex:1;padding:16px;text-align:center;background:#faf8f3;}
+.stat:not(:last-child){border-right:1px solid #e5e7eb;}
+.stat-num{font-family:Georgia,serif;font-size:24px;font-weight:700;color:#0f1f3d;}
+.stat-label{font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+.quote-box{background:#0f1f3d;border-radius:10px;padding:20px 24px;margin:24px 0;}
+.quote-text{font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;font-style:italic;margin-bottom:10px;}
+.quote-attr{font-size:12px;color:#c9a84c;font-weight:600;}
+.cta-primary{display:block;text-align:center;background:#c9a84c;color:#0f1f3d;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;margin:28px 0 12px;}
+.offer-box{background:#f3efe6;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#374151;line-height:1.6;text-align:center;}
+.offer-box strong{color:#0f1f3d;}
+.footer-note{font-size:12px;color:#9ca3af;text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #e5e7eb;line-height:1.6;}
+.footer-note a{color:#9ca3af;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+  <div class="header">
+    <div class="logo">Small<span>Claims</span>Pro</div>
+  </div>
+  <div class="body">
+    <p class="p">Hi {{name}},</p>
+    <p class="p">A quick follow-up on your {{state_name}} small claims case.</p>
+    <p class="p">Here's something most people don't realize: <strong>the majority of small claims cases never go to a hearing.</strong> The demand letter is what gets paid.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">~60%</div><div class="stat-label">Resolve after demand letter</div></div>
+      <div class="stat"><div class="stat-num">~25%</div><div class="stat-label">Settle before hearing</div></div>
+      <div class="stat"><div class="stat-num">~15%</div><div class="stat-label">Go to full trial</div></div>
+    </div>
+
+    <p class="p">Why does the demand letter work so often? Because most defendants — especially contractors, landlords, and small businesses — don't want a court judgment on the record. When they receive a certified letter citing the applicable statute and making clear you've engaged a professional document service, many pay within 10 days.</p>
+
+    <div class="quote-box">
+      <p class="quote-text">"I sent the demand letter SmallClaimsPro drafted on a Monday. By Thursday the contractor called and asked what it would take to settle. We agreed on a number Friday. Never had to file."</p>
+      <p class="quote-attr">— SmallClaimsPro user, Texas</p>
+    </div>
+
+    <p class="p">Your Court Packet ($29) includes your demand letter in {{state_name}} legal language — ready to print, sign, and send certified mail today. It also includes the filing petition, evidence checklist, and hearing script in case they don't pay.</p>
+
+    <div class="offer-box">
+      <strong>$29 total.</strong> No subscription. No hidden fees. One flat payment, everything you need to resolve this.
+    </div>
+
+    <a href="https://square.link/u/Y6Wb0XPx" class="cta-primary">Get My Court Packet — $29 →</a>
+
+    <p class="p" style="font-size:13px;color:#9ca3af;">Still have questions about the process? Reply to this email — we're happy to help.</p>
+
+    <div class="footer-note">
+      SmallClaimsPro · Document preparation service · Not a law firm<br/>
+      <a href="{{unsubscribe_url}}">Unsubscribe</a> · <a href="https://smallclaimspro.online/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
+<!-- ============================================================
+     EMAIL 3: "Last check-in — did you get resolved?"
+     Sent: Day 7 (if no paid purchase recorded)
+     Subject: Quick check-in on your {{state_name}} case, {{name}}
+     ============================================================ -->
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body{margin:0;padding:0;background:#f4f1eb;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+.wrap{max-width:580px;margin:0 auto;padding:32px 16px;}
+.card{background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(15,31,61,0.08);}
+.header{background:#0f1f3d;padding:28px 32px;border-bottom:3px solid #c9a84c;}
+.logo{font-family:Georgia,serif;font-size:20px;font-weight:700;color:#ffffff;}
+.logo span{color:#c9a84c;}
+.body{padding:32px;}
+.p{font-size:15px;color:#374151;line-height:1.7;margin-bottom:16px;}
+.compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px;}
+.compare-table th{background:#0f1f3d;color:#fff;padding:10px 14px;text-align:left;font-size:12px;letter-spacing:0.04em;}
+.compare-table td{padding:10px 14px;border-bottom:1px solid #e5e7eb;color:#374151;}
+.compare-table tr:nth-child(even) td{background:#faf8f3;}
+.compare-table td:first-child{font-weight:600;color:#0f1f3d;}
+.check{color:#16a34a;font-weight:700;}
+.cross{color:#dc2626;}
+.cta-primary{display:block;text-align:center;background:#c9a84c;color:#0f1f3d;padding:14px 24px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;margin:28px 0 12px;}
+.cta-secondary{display:block;text-align:center;background:transparent;color:#0f1f3d;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:2px solid #0f1f3d;margin-bottom:20px;}
+.p-small{font-size:12px;color:#9ca3af;text-align:center;line-height:1.6;margin-top:8px;}
+.footer-note{font-size:12px;color:#9ca3af;text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid #e5e7eb;line-height:1.6;}
+.footer-note a{color:#9ca3af;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+  <div class="header">
+    <div class="logo">Small<span>Claims</span>Pro</div>
+  </div>
+  <div class="body">
+    <p class="p">Hi {{name}},</p>
+    <p class="p">One more check-in. It's been about a week since your free analysis — I want to make sure you have everything you need.</p>
+    <p class="p"><strong>If you already got paid or resolved the issue:</strong> That's great news — reply and let us know. We'd love to hear how it went.</p>
+    <p class="p"><strong>If you're still waiting:</strong> The window to file matters. In {{state_name}}, your statute of limitations is running. More practically — the longer you wait, the harder it gets to collect once you win, because defendants move, close accounts, and transfer assets.</p>
+    <p class="p">Here's what you get with the Court Packet vs. going it completely alone:</p>
+
+    <table class="compare-table">
+      <thead><tr><th>What You Need</th><th>On Your Own</th><th>Court Packet ($29)</th></tr></thead>
+      <tbody>
+        <tr><td>Demand letter in {{state_name}} legal language</td><td class="cross">✗ Write it yourself</td><td class="check">✓ AI-generated, ready to send</td></tr>
+        <tr><td>Right court form for {{court_name}}</td><td class="cross">✗ Find and fill yourself</td><td class="check">✓ Identified and pre-filled</td></tr>
+        <tr><td>Evidence checklist for your case type</td><td class="cross">✗ Guess what to bring</td><td class="check">✓ Specific to your situation</td></tr>
+        <tr><td>Filing instructions and fees</td><td class="cross">✗ Research yourself</td><td class="check">✓ Included</td></tr>
+        <tr><td>Hearing script</td><td class="cross">✗ Wing it on the day</td><td class="check">✓ What to say, in order</td></tr>
+      </tbody>
+    </table>
+
+    <a href="https://square.link/u/Y6Wb0XPx" class="cta-primary">Get My Court Packet — $29 →</a>
+    <a href="https://square.link/u/done-for-you" class="cta-secondary">Done-For-You Prep — $99 →</a>
+    <p class="p-small">Done-For-You includes a human review of your case details, a personalized prep session, and follow-up support through your hearing date.</p>
+
+    <p class="p" style="font-size:13px;color:#9ca3af;margin-top:24px;">After this email we'll leave you to it — no more follow-ups from us unless you reach out. We genuinely hope you get this resolved.</p>
+
+    <div class="footer-note">
+      SmallClaimsPro · Document preparation service · Not a law firm<br/>
+      <a href="{{unsubscribe_url}}">Unsubscribe</a> · <a href="https://smallclaimspro.online/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
