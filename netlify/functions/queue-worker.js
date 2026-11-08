@@ -294,7 +294,7 @@ function buildFreeEmailHtml(payload, generated) {
       <h3 style="margin:16px 0 8px 0;">${escapeHtml(stateData.name)} filing reminder</h3>
       <p style="margin:0 0 8px 0;">${escapeHtml(generated.filingReminder)}</p>
       <p style="margin:0 0 16px 0;font-size:13px;color:#555;">Court: ${escapeHtml(stateData.courtName)} · Claim limit: ${escapeHtml(stateData.claimLimit)} · <a href="${escapeHtml(stateData.courtUrl)}">Court website</a></p>
-      <p style="margin:0;"><a href="https://square.link/u/Y6Wb0XPx">Court Packet ($29)</a> | <a href="https://square.link/u/vSbyYSIn">Done-For-You Prep ($99)</a></p>
+      <p style="margin:0;"><a href="https://square.link/u/Y6Wb0XPx">Court Packet ($29)</a></p>
       <p style="margin-top:16px;font-size:12px;color:#888;">${escapeHtml(stateData.disclaimer)}</p>
     </div>
   `;

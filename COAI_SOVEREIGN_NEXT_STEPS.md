@@ -29,9 +29,9 @@ This file captures the active SEO/GEO/AEO pass applied and what data is still re
 ## Still needed for full LocalBusiness schema
 Applied from owner-provided data:
 - Canonical business name: `Chaotically Organized AI`
-- Full address: `2101 16th Ave, Bakersfield, CA 93301`
-- Public phone: `+1-661-610-9198`
-- Opening hours: `9:00 AM - 10:00 PM` (daily)
+- Address: none published (remote/service-area business)
+- Public phone: `+1-661-683-0228`
+- Opening hours: `8:00 AM - 10:00 PM` (daily)
 - SameAs: Facebook profile
 
 Still needed for full enrichment:
