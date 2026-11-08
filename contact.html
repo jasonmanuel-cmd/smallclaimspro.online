@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<meta name="theme-color" content="#0f1f3d"/>
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"/>
 <title>Contact | SmallClaimsPro — Bakersfield Small Claims Help</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -153,6 +156,16 @@ function handleContact(e){
     .then(r=>{form.style.display='none';document.getElementById('success-msg').style.display='block';})
     .catch(()=>form.submit());
 }
+</script>
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search).get('source');
+    if(q==='twa'||document.referrer.indexOf('android-app://')===0){sessionStorage.setItem('scp_app','android');}
+    if(sessionStorage.getItem('scp_app')){document.documentElement.setAttribute('data-app',sessionStorage.getItem('scp_app'));}
+  }catch(e){}
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+})();
 </script>
 </body>
 </html>

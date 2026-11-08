@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<meta name="theme-color" content="#0f1f3d"/>
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"/>
 <title>Privacy Policy | SmallClaimsPro</title>
 <meta name="robots" content="noindex"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -79,5 +82,15 @@ footer a:hover{color:var(--gold);}
 <footer>
   <p><a href="/">Home</a><a href="/terms">Terms of Service</a><a href="/contact">Contact</a> · © 2026 SmallClaimsPro · A Chaotically Organized AI product</p>
 </footer>
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search).get('source');
+    if(q==='twa'||document.referrer.indexOf('android-app://')===0){sessionStorage.setItem('scp_app','android');}
+    if(sessionStorage.getItem('scp_app')){document.documentElement.setAttribute('data-app',sessionStorage.getItem('scp_app'));}
+  }catch(e){}
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+})();
+</script>
 </body>
 </html>
