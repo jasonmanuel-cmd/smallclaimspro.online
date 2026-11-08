@@ -25,6 +25,7 @@ New apps must target Android 16 (API 36) or higher. Check that the Bubblewrap ve
 
 ## Policy risks to settle before submitting
 - **Payments:** the $29 packet is a digital good. Play's payments policy expects Google Play Billing for digital goods. In the US, Google now allows external links or alternative billing **only if enrolled** in its US programs, with service fees reported from Oct 1, 2026. Fee amounts are not on Google's page. Options: (a) enroll in the US external content links program and keep Square, (b) Play Billing through the Digital Goods API, (c) ship v1 with the free analysis only and hide checkout in the app (`[data-app="android"]`).
+  - **Done for testing:** inside the app, every Square checkout link (`a[href*="square.link"]`) is hidden and clicks on it are blocked, so closed-test builds carry no web checkout. Price text still shows; the $29/$99 links in emails sent by `queue-worker.js` are outside the app and unchanged. Revisit when the payments choice is made.
 - **AI content:** Google's AI-generated content policy requires an in-app way to report offensive AI output. Its examples are chatbots and images. Add a "Report a problem with this answer" link to be safe.
 - **Not a court:** the listing and app must not look like an official court or government service. Keep "Not affiliated with any court. Information and document support, not legal advice." in the listing and app.
 - **No fake reviews or outcomes** in the listing (see the trust-cleanup PR).

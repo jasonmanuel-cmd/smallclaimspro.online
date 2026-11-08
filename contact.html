@@ -162,7 +162,7 @@ function handleContact(e){
   try{
     var q=new URLSearchParams(location.search).get('source');
     if(q==='twa'||document.referrer.indexOf('android-app://')===0){sessionStorage.setItem('scp_app','android');}
-    if(sessionStorage.getItem('scp_app')){document.documentElement.setAttribute('data-app',sessionStorage.getItem('scp_app'));}
+    if(sessionStorage.getItem('scp_app')){document.documentElement.setAttribute('data-app',sessionStorage.getItem('scp_app'));var st=document.createElement('style');st.textContent='html[data-app] a[href*="square.link"]{display:none!important}';document.head.appendChild(st);document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="square.link"]');if(a){e.preventDefault();}},true);}
   }catch(e){}
   if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
 })();
