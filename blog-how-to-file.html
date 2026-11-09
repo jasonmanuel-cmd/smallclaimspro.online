@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<meta name="theme-color" content="#0f1f3d"/>
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"/>
 <title>How to File Small Claims Court in Bakersfield CA — 2026 Guide | SmallClaimsPro</title>
 <meta name="description" content="Step-by-step guide to filing small claims court in Bakersfield and Kern County California. SC-100 form, courthouse address, filing fees, and hearing day tips."/>
 <link rel="canonical" href="https://smallclaimspro.netlify.app/blog/how-to-file-small-claims-bakersfield"/>
@@ -320,5 +323,15 @@ footer p{font-size:11px;color:rgba(255,255,255,0.25);}
   <div class="footer-links"><a href="/">Home</a><a href="/blog">Guides</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
   <p>SmallClaimsPro · Bakersfield & Kern County · Information only — not legal advice · © 2026</p>
 </footer>
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search).get('source');
+    if(q==='twa'||document.referrer.indexOf('android-app://')===0){sessionStorage.setItem('scp_app','android');}
+    if(sessionStorage.getItem('scp_app')){document.documentElement.setAttribute('data-app',sessionStorage.getItem('scp_app'));var st=document.createElement('style');st.textContent='html[data-app] a[href*="square.link"]{display:none!important}';document.head.appendChild(st);document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="square.link"]');if(a){e.preventDefault();}},true);}
+  }catch(e){}
+  if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+})();
+</script>
 </body>
 </html>
