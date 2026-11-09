@@ -54,13 +54,9 @@ End with this exact section and include both offers:
 - Evidence checklist (exactly what to bring)
 - Word-for-word court script (what to say to the judge)
 - Process server contacts in Bakersfield
-[Get My Court Packet -> {{PAYMENT_LINK_29}}]
+[Get My Court Packet -> {{PAYMENT_LINK_29}}]"
 
-Need done-for-you support? For $99, you'll get:
-- Full document preparation and formatting
-- Court forms filled out for your case details
-- Ready-to-file packet (you review, sign, and file)
-[Done-For-You Document Prep -> {{PAYMENT_LINK_99}}]"
+(The $99 Done-For-You tier is paused pending a California attorney's review of legal document assistant rules. Do not offer it.)
 
 Tone rules:
 - Empowering (user can do this)

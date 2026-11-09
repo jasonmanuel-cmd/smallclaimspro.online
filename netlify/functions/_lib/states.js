@@ -10,7 +10,7 @@ export const STATE_DATA = {
     name: "California",
     courtName: "Small Claims Court (Superior Court)",
     claimLimit: "$12,500 (individuals), $6,250 (businesses)",
-    filingFees: "$30–$75 depending on claim amount",
+    filingFees: "$30–$75 depending on claim amount under the pre-2026 fee law; a 2026 law (AB 2781) changes the bands, so confirm the current fee with the court",
     demandLetterNote: "Not legally required but strongly recommended — judges expect evidence of a resolution attempt.",
     sol: {
       written: "4 years (CCP §337)",
